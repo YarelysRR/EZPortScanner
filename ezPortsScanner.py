@@ -4,7 +4,7 @@ import sys
 
 def signal_handler(sig, frame):
     """Signal handler for Ctrl + C"""
-    print("Exiting the program.")
+    print("Thank you for using, EZ Port Scanning!")
     sys.exit(0)
 
 def port_scans(target):
@@ -36,7 +36,7 @@ def main():
         target = input("Enter IP Address to scan (or type 'exit' to quit): ")
 
         if target.lower() in ['exit', 'quit']:
-            print("Exiting the program.")
+            print("Thank you for using, EZ Port Scanning!")
             break
 
         print("*" * 30)
@@ -48,7 +48,7 @@ def main():
 
         response = input("Would you like to scan another IP Address? Type Y / N: ")
         if response.upper() != 'Y':
-            print("Exiting the program.")
+            print("Thank you for using, EZ Port Scanning!")
             break
 
 if __name__ == "__main__":
