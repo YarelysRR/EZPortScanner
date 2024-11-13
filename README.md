@@ -1,51 +1,44 @@
 # EZ Port Scanning Tool
 
-Welcome to **EZ Port Scanning**, a command-line (CLI) tool designed to make port scanning simple and efficient. This tool lets you scan for open ports on a target IP address, with options to customize the port range, set threading limits, and control socket timeouts. It’s a versatile tool, built with multithreading for faster scanning and flexibility in mind.
+EZ Port Scanner is a flexible and efficient port scanner for scanning open ports on a target IP. It supports both command-line arguments for advanced users and an interactive mode for ease of use.
 
 ## Features
-
-- **Multithreaded Scanning**: Allows you to scan large port ranges quickly by specifying the number of threads.
-- **Configurable Port Range**: Scan all ports or a specific range based on your needs.
-- **Socket Timeout Control**: Customize the timeout for each port scan attempt to adjust to various network environments.
-- **Progress Indicator**: See scan progress in real-time, ideal for large port ranges.
-- **Validation and Error Handling**: Input validation and interrupt handling ensure a smooth user experience.
-- **Easy to Use**: CLI arguments let you customize your scan with minimal effort.
+- **Scan All Ports**: Scans from port 1 to 65535 (default is ports 1-1000).
+- **Multithreaded**: Optimized for speed using multiple threads.
+- **Customizable Settings**: Users can set specific port ranges, timeout, and thread count.
+- **Interactive Mode**: If arguments aren’t provided, the tool will prompt for settings interactively.
 
 ## Requirements
+- Python 3.x
 
-- **Python 3.x**: Ensure Python is installed on your system. You can download it from [Python’s official website](https://www.python.org/downloads/).
-  
-## Installation 
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/ez-port-scanning.git
-   cd ez-port-scanning
+## Installation
+Clone this repository:
+```bash
+git clone https://github.com/yourusername/ezPortScanner.git
+cd ezPortScanner
 
 
 # USAGE
+You can run EZ Port Scanning Tool in two ways:
 
-1. **Interactive Mode**
-Run the tool with default parameters to scan ports 1 to 1000 on the target IP: ```python port_scanner.py <target IP>```
+1. Command Line Mode
 
-You will be prompted to enter the IP, port range, thread count, and timeout.
+```python3 ezPortScanner.py <target IP>``` or ```python3 ezPortScanner.py <target_ip> [--start_port <start>] [--end_port <end>] [--threads <count>] [--timeout <seconds>]```
 
-2. Command-Line Arguments
+2. **Interactive Mode**
+Run without arguments, and the tool will prompt for necessary details:
+```python3 ezPortScanner.py```
 
-You can customize your scan directly, for example: ```python port_scanner.py <target_ip> --start_port <start> --end_port <end> --threads <threads> --timeout <timeout>```
-
-# Example
-To scan ports 1–1000 on 192.168.1.1 with 50 threads and a 1-second timeout: ```python port_scanner.py 192.168.1.1 --start_port 1 --end_port 1000 --threads 50 --timeout 1```
 
 # Arguments
  | Argument	    |               Description	                        | Default |
  |--------------|---------------------------------------------------|---------|
- |<target_ip>   | The IP address to scan	                        | Required|
+ |<target_ip>   | The IPV4 address to scan	                        | N/A     |
  |--start_port	| Starting port number	                            | 1       |
  |--end_port    | Ending port number	                            | 1000    |
  |--threads	    | Max concurrent threads	                        | 100     |
  |--timeout	    | Timeout (in seconds) for each port connection	    | 0.5     |
 
- 
+
 
 
