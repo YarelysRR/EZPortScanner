@@ -29,15 +29,15 @@ def scan_port(target, port, timeout=0.5):
         sock.close()
     return None
 
-def port_scans(target, start_port=1, end_port=1024, max_threads=100):
+def port_scans(target, start_port=1, end_port=65535, max_threads=100, timeout=0.5):
     """Scan ports on the target IP within a specified range using multithreading."""
     print(f"Scanning target {target} from port {start_port} to {end_port}...\n")
     open_ports = []
     total_ports = end_port - start_port + 1
     scanned_ports = 0
-    
+
     with ThreadPoolExecutor(max_workers=max_threads) as executor:
-        futures = [executor.submit(scan_port, target, port) for port in range(start_port, end_port + 1)]
+        futures = [executor.submit(scan_port, target, port, timeout) for port in range(start_port, end_port + 1)]
         
         for future in as_completed(futures):
             port = future.result()
@@ -61,7 +61,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="EZ Port Scanning Tool")
     parser.add_argument("target", help="Target IP address")
     parser.add_argument("--start_port", type=int, default=1, help="Starting port (default 1)")
-    parser.add_argument("--end_port", type=int, default=1024, help="Ending port (default 1024)")
+    parser.add_argument("--end_port", type=int, default=1000, help="Ending port (default 1000)")
     parser.add_argument("--threads", type=int, default=100, help="Maximum number of threads (default 100)")
     parser.add_argument("--timeout", type=float, default=0.5, help="Socket timeout in seconds (default 0.5)")
     return parser.parse_args()
@@ -88,7 +88,7 @@ def main():
         return
     
     # Start the port scan
-    port_scans(args.target, args.start_port, args.end_port, args.threads)
+    port_scans(args.target, args.start_port, args.end_port, args.threads, args.timeout)
 
 if __name__ == "__main__":
     main()
