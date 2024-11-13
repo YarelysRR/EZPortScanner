@@ -13,24 +13,27 @@ EZ Port Scanner is a flexible and efficient port scanner for scanning open ports
 
 ## Installation
 Clone this repository:
-```bash
-git clone https://github.com/yourusername/ezPortScanner.git
-cd ezPortScanner
+
+```git clone https://github.com/yourusername/ezPortScanner.git
+cd ezPortScanner```
 
 
 # USAGE
+
 You can run EZ Port Scanning Tool in two ways:
 
-1. Command Line Mode
+1. **Command Line Mode**
+All settings can be provided as command-line arguments:
 
-```python3 ezPortScanner.py <target IP>``` or ```python3 ezPortScanner.py <target_ip> [--start_port <start>] [--end_port <end>] [--threads <count>] [--timeout <seconds>]```
+```python3 ezPortScanner.py <target IP> **OR**
+ python3 ezPortScanner.py <target_ip> [--start_port <start>] [--end_port <end>] [--threads <count>] [--timeout <seconds>]```
 
 2. **Interactive Mode**
 Run without arguments, and the tool will prompt for necessary details:
 ```python3 ezPortScanner.py```
 
 
-# Arguments
+# ARGUMENTS
  | Argument	    |               Description	                        | Default |
  |--------------|---------------------------------------------------|---------|
  |<target_ip>   | The IPV4 address to scan	                        | N/A     |
