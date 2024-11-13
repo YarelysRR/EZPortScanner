@@ -17,16 +17,17 @@ Clone this repository:
 ```git clone https://github.com/yourusername/ezPortScanner.git
 cd ezPortScanner```
 
-
-# USAGE
-
+## Usage 
 You can run EZ Port Scanning Tool in two ways:
 
 1. **Command Line Mode**
-All settings can be provided as command-line arguments:
+All settings can be provided as command-line arguments, for example:
 
-```python3 ezPortScanner.py <target IP> **OR**
- python3 ezPortScanner.py <target_ip> [--start_port <start>] [--end_port <end>] [--threads <count>] [--timeout <seconds>]```
+```python3 ezPortScanner.py <target IP>``` 
+
+**OR**
+
+```python3 ezPortScanner.py <target_ip> [--start_port <start>] [--end_port <end>] [--threads <count>] [--timeout <seconds>]```
 
 2. **Interactive Mode**
 Run without arguments, and the tool will prompt for necessary details:
