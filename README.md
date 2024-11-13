@@ -14,11 +14,11 @@ EZ Port Scanner is a flexible and efficient port scanner for scanning open ports
 ## Installation
 Clone this repository:
 
-```git clone https://github.com/yourusername/ezPortScanner.git
-cd ezPortScanner```
+```git clone https://github.com/yourusername/ezPortScanner.git```, then, 
+```cd ezPortScanner```
 
 ## Usage 
-You can run EZ Port Scanning Tool in two ways:
+You can run EZPortScanner in two ways:
 
 1. **Command Line Mode**
 All settings can be provided as command-line arguments, for example:
