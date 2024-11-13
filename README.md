@@ -31,12 +31,13 @@ Run without arguments, and the tool will prompt for necessary details:
 
 
 # Arguments
+
  | Argument	    |               Description	                        | Default |
  |--------------|---------------------------------------------------|---------|
- |<target_ip>   | The IPV4 address to scan	                        | N/A     |
- |--start_port	| Starting port number	                            | 1       |
- |--end_port    | Ending port number	                            | 1000    |
- |--threads	    | Max concurrent threads	                        | 100     |
+ |<target_ip>   | The IPV4 address to scan	                         | N/A     |
+ |--start_port	 | Starting port number	                             | 1       |
+ |--end_port    | Ending port number	                               | 1000    |
+ |--threads	    | Max concurrent threads	                           | 100     |
  |--timeout	    | Timeout (in seconds) for each port connection	    | 0.5     |
 
 
