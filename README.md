@@ -26,23 +26,24 @@ Welcome to **EZ Port Scanning**, a command-line (CLI) tool designed to make port
 # USAGE
 
 1. Interactive Mode
-Run the Tool: __python port_scanner.py__
+Run the Tool: 
+```python port_scanner.py```
 You will be prompted to enter the IP, port range, thread count, and timeout.
 
 2. Command-Line Arguments
 Customize your scan directly with:
 
-python port_scanner.py <target_ip> --start_port <start> --end_port <end> --threads <threads> --timeout <timeout>
+```python port_scanner.py <target_ip> --start_port <start> --end_port <end> --threads <threads> --timeout <timeout>```
 
 # Example
 To scan ports 1–1000 on 192.168.1.1 with 50 threads and a 1-second timeout:
 
-python port_scanner.py 192.168.1.1 --start_port 1 --end_port 1000 --threads 50 --timeout 1
+```python port_scanner.py 192.168.1.1 --start_port 1 --end_port 1000 --threads 50 --timeout 1```
 
 # Arguments
-Argument	Description	Default
-<target_ip> The IP address to scan	                        Required
---start_port	Starting port number	                    1
---end_port	Ending port number	                            1024
---threads	Max concurrent threads	                        100
---timeout	Timeout (in seconds) for each port connection	0.5
+ ```Argument	Description	Default
+<target_ip>     The IP address to scan	                        Required
+--start_port	Starting port number	                        1
+--end_port	    Ending port number	                            1024
+--threads	    Max concurrent threads	                        100
+--timeout	    Timeout (in seconds) for each port connection	0.5 ```
