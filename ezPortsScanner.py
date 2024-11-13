@@ -56,39 +56,44 @@ def port_scans(target, start_port=1, end_port=65535, max_threads=100, timeout=0.
     else:
         print("No open ports found.")
 
-def parse_args():
-    """Parse command-line arguments for the port scanner."""
-    parser = argparse.ArgumentParser(description="EZ Port Scanning Tool")
-    parser.add_argument("target", help="Target IP address")
-    parser.add_argument("--start_port", type=int, default=1, help="Starting port (default 1)")
-    parser.add_argument("--end_port", type=int, default=1000, help="Ending port (default 1000)")
-    parser.add_argument("--threads", type=int, default=100, help="Maximum number of threads (default 100)")
-    parser.add_argument("--timeout", type=float, default=0.5, help="Socket timeout in seconds (default 0.5)")
-    return parser.parse_args()
+def get_user_input():
+    """Prompt the user to enter or adjust scan parameters."""
+    target = input("Enter IP Address to scan: ")
+    if not validate_ip(target):
+        print("Invalid IP address format.")
+        return get_user_input()
+    
+    start_port = int(input("Enter starting port (default 1): ") or 1)
+    end_port = int(input("Enter ending port (default 1000): ") or 1000)
+    max_threads = int(input("Enter maximum number of threads (default 100): ") or 100)
+    timeout = float(input("Enter socket timeout in seconds (default 0.5): ") or 0.5)
+
+    return target, start_port, end_port, max_threads, timeout
 
 def main():
     """Main function for EZ Port Scanner program."""
-    args = parse_args()
     signal.signal(signal.SIGINT, signal_handler)
     
-    # Validate IP address
-    if not validate_ip(args.target):
-        print("Invalid IP address format. Please enter a valid IP.")
-        return
-    
-    # Confirm scan details with the user
-    print(f"Starting scan on target {args.target}")
-    print(f"Port range: {args.start_port} to {args.end_port}")
-    print(f"Thread count: {args.threads}")
-    print(f"Socket timeout: {args.timeout} seconds")
-    
-    confirm = input("Proceed with these settings? (Y/N): ").strip().lower()
-    if confirm != 'y':
-        print("Scan canceled.")
-        return
-    
-    # Start the port scan
-    port_scans(args.target, args.start_port, args.end_port, args.threads, args.timeout)
+    target, start_port, end_port, max_threads, timeout = get_user_input()
+
+    while True:
+        # Confirm scan details with the user
+        print(f"\nStarting scan on target {target}")
+        print(f"Port range: {start_port} to {end_port}")
+        print(f"Thread count: {max_threads}")
+        print(f"Socket timeout: {timeout} seconds")
+        
+        confirm = input("Proceed with these settings? (Y/N or type 'exit' to quit): ").strip().lower()
+        if confirm == 'y':
+            # Start the port scan with the confirmed parameters
+            port_scans(target, start_port, end_port, max_threads, timeout)
+            break
+        elif confirm == 'exit':
+            print("Scan canceled. Exiting.")
+            break
+        else:
+            print("Please enter new scan settings:")
+            target, start_port, end_port, max_threads, timeout = get_user_input()
 
 if __name__ == "__main__":
     main()
